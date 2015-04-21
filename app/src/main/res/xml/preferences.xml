@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="Turn services on or off">
+
+        <CheckBoxPreference
+            android:key="BROADCASTS_ENABLE"
+            android:title="Enable Custom Broadcast Tracking"
+            android:summary="Keep track of received custom broadcast" />
+
+        <Preference
+            android:key="BROADCASTS_TOTAL"
+            android:enabled="false"
+            android:selectable="false"
+            android:title="Total custom broadcasts received"
+            android:summary="0"/>
+
+        <CheckBoxPreference
+            android:key="NOTIFICATIONS_ENABLE"
+            android:enabled="false"
+            android:title="Enable Notifications"
+            android:summary="Send a notification to the user when a custom broadcast is received" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="">
+
+        <EditTextPreference
+            android:title="Default Notification"
+            android:defaultValue="Howdy! Got another custom broadcast!"
+            android:summary="Howdy! Got another custom broadcast!"
+            android:key="NOTIFICATIONS_DEFAULT" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

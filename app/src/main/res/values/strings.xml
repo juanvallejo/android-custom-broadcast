@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BR1</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <array name="jsonarray">
+        <item name="url1">http://www.tetonsoftware.com/bikes/bikes.json</item>
+        <item name="url2">http://www.pcs.cnu.edu/~kperkins/bikes/bikes.json</item>
+    </array>
+
+</resources>
