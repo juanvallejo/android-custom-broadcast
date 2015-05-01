@@ -1,7 +1,10 @@
 package com.example.br1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +22,13 @@ public class MainActivity extends ActionBarActivity {
 
 		// set the context of the app
 		Globals.mainActivityContext = this;
+		Globals.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+		// initialize globals
+		Globals.broadcastCount = Globals.sharedPreferences.getInt(Constants.BROADCASTS_TOTAL, 0);
+		Globals.notificationsText = Globals.sharedPreferences.getString(Constants.NOTIFICATIONS_DEFAULT, Constants.NOTIFICATIONS_DEFAULT_TEXT);
+		Globals.customBroadcastTracking = Globals.sharedPreferences.getBoolean(Constants.BROADCASTS_ENABLE, false);
+		Globals.notificationsEnabled = Globals.sharedPreferences.getBoolean(Constants.NOTIFICATIONS_ENABLE, false);
 
 	}
 
@@ -50,17 +60,31 @@ public class MainActivity extends ActionBarActivity {
 
 		return super.onOptionsItemSelected(item);
 	}
-	
+
+	/**
+	 * Click handler for the broadcast button
+	 * @param view
+	 */
 	public void doBroadcast(View view){
 
 		// check to see if broadcasts have been enabled
 		if(Globals.customBroadcastTracking) {
+
+			// send intent to MyReceiver.java
 			Intent myIntent = new Intent("com.example.br1.MYACTION");
 			sendBroadcast(myIntent);
+
 		} else {
 			Toast.makeText(this, "Broadcasts are not enabled, see settings.", Toast.LENGTH_SHORT).show();
 		}
 	}
 
+	/**
+	 * Reset broadcast count
+	 * @param view
+	 */
+	public void resetCount(View view) {
+		Actions.resetBroadcastCount();
+	}
 
 }

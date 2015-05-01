@@ -8,5 +8,7 @@
         <item name="url1">http://www.tetonsoftware.com/bikes/bikes.json</item>
         <item name="url2">http://www.pcs.cnu.edu/~kperkins/bikes/bikes.json</item>
     </array>
+    <bool name="notifs_checked">false</bool>
+    <bool name="bc_checked">false</bool>
 
 </resources>
